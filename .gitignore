@@ -5,6 +5,8 @@
 build
 *.egg-info
 
+src/output
+
 # Dataset
 *.npz
 

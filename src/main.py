@@ -52,9 +52,12 @@ def main(config):
         torch.manual_seed(config['seed'])
 
     device = torch.device('cuda' if (torch.cuda.is_available() and config['gpu'] != '-1') else 'cpu')
+
+    device = 'cpu'
+
     logger.info("Using device: {}".format(device))
-    if device == 'cuda':
-        logger.info("Device index: {}".format(torch.cuda.current_device()))
+    # if device.type == 'cuda':
+    #     logger.info("Device index: {}".format(torch.cuda.current_device()))
 
     # Build data
     logger.info("Loading and preprocessing data ...")
@@ -153,7 +156,6 @@ def main(config):
     logger.info("Model:\n{}".format(model))
     logger.info("Total number of parameters: {}".format(utils.count_parameters(model)))
     logger.info("Trainable parameters: {}".format(utils.count_parameters(model, trainable=True)))
-
 
     # Initialize optimizer
 
